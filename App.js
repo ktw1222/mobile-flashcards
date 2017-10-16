@@ -8,6 +8,7 @@ import reducer from './reducers'
 import { receiveDecks } from './actions'
 import Decks from './components/Decks'
 import Deck from './components/Deck'
+import NewDeck from './components/NewDeck'
 import { Constants } from 'expo'
 import { purple } from './utils/colors'
 
@@ -52,12 +53,21 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'DECKS'
     }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: 'NEW DECK'
+    }
   }
 })
 
 const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
+    navigationOptions: {
+      title: 'DECKS'
+    }
   },
   Deck: {
     screen: Deck

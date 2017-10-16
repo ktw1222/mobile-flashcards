@@ -1,17 +1,44 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import { lightGreen, gray } from '../utils/colors'
 
 class DeckCard extends Component {
   render() {
     const { deck, number } = this.props
 
     return (
-      <View>
-        <Text>{deck}</Text>
-        <Text>{number} cards</Text>
+      <View style={styles.card}>
+        <Text style={styles.title}>{deck}</Text>
+        <Text style={styles.number}>{number} cards</Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  card: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: lightGreen,
+    borderRadius: 16,
+    padding: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 17,
+    shadowRadius: 3,
+    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0,0,0,0.24)',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    }
+  },
+  title: {
+    fontSize: 30
+  },
+  number: {
+    color: gray
+  },
+})
 
 export default DeckCard
