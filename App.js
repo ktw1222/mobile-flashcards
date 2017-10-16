@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native'
+import { StyleSheet, Text, View, AsyncStorage, StatusBar } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import { getDecks } from './utils/api'
 import { createStore } from 'redux'
@@ -7,6 +7,16 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { receiveDecks } from './actions'
 import Decks from './components/Decks'
+import { Constants } from 'expo'
+import { purple } from './utils/colors'
+
+function UdaciStatusBar ({ backgroundColor, ...props }) {
+  return (
+    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  )
+}
 
 const UdaciDecks = {
   React: {
@@ -49,6 +59,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
+          <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
           <Tabs />
         </View>
       </Provider>

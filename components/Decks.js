@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { receiveDecks } from '../actions'
 import { getDecks } from '../utils/api'
+import DeckList from './DeckList'
 
 class Decks extends Component {
   componentDidMount() {
@@ -12,15 +13,13 @@ class Decks extends Component {
   render() {
     return (
       <View>
-        <Text>
-          {JSON.stringify(this.props.decks)}
-        </Text>
+        <DeckList decks={this.props.decks} />
       </View>
     )
   }
 }
 
-function mapStateToProps ({ decks }) {
+function mapStateToProps (decks) {
   return {
     decks
   }
