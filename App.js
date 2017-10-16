@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, AsyncStorage, StatusBar } from 'react-native'
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 import { getDecks } from './utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { receiveDecks } from './actions'
 import Decks from './components/Decks'
+import Deck from './components/Deck'
 import { Constants } from 'expo'
 import { purple } from './utils/colors'
 
@@ -54,13 +55,22 @@ const Tabs = TabNavigator({
   }
 })
 
+const MainNavigator = StackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  Deck: {
+    screen: Deck
+  }
+})
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
           <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
-          <Tabs />
+          <MainNavigator />
         </View>
       </Provider>
     )
