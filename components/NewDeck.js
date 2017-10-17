@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  View,
   Text,
   StyleSheet,
   TouchableOpacity,
@@ -30,9 +29,7 @@ class NewDeck extends Component {
       }
     }
     this.props.addDeck(newDeck)
-    this.props.navigation.dispatch(NavigationActions.back({
-      key: 'Decks'
-    }))
+    this.props.navigation.goBack()
   }
 
   render() {
@@ -44,7 +41,7 @@ class NewDeck extends Component {
         <TextInput
           value={input}
           style={styles.input}
-          onChange={this.handleTextChange}
+          onChangeText={this.handleTextChange}
         />
         <TouchableOpacity style={styles.button} onPress={() => this.handleSubmit(input)}>
           <Text style={styles.buttonText}>Submit</Text>
