@@ -10,6 +10,7 @@ import Decks from './components/Decks'
 import Deck from './components/Deck'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
+import Quiz from './components/Quiz'
 import { Constants } from 'expo'
 import { purple } from './utils/colors'
 
@@ -75,6 +76,9 @@ const MainNavigator = StackNavigator({
   },
   NewQuestion: {
     screen: NewQuestion
+  },
+  Quiz: {
+    screen: Quiz
   }
 })
 

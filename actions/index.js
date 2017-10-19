@@ -24,10 +24,3 @@ export function addCard (title, card) {
     card
   }
 }
-
-export function receiveDeck (deck) {
-  return {
-    type: GET_DECK,
-    deck
-  }
-}

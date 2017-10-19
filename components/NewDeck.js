@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { saveNewDeck } from '../utils/api'
 import { NavigationActions } from 'react-navigation'
+import { white, darkGreen, gray } from '../utils/colors'
 
 class NewDeck extends Component {
   state = {
@@ -62,19 +63,19 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: 'black',
+    backgroundColor: darkGreen,
     borderRadius: 5,
     margin: 20,
   },
   buttonText :{
-    color: 'white',
+    color: white,
     fontSize: 20,
   },
   input: {
     height: 44,
     width: 200,
     padding: 8,
-    borderColor: '#757575',
+    borderColor: gray,
     borderWidth: 1,
     margin: 50
   }

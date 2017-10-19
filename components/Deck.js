@@ -7,22 +7,16 @@ import { getDeck } from '../utils/api'
 import { receiveDeck } from '../actions'
 
 class Deck extends Component {
-  componentDidMount () {
-    getDeck('JavaScript').then(deck => {
-      this.props.receiveDeck(deck)
-    })
-  }
-
   render() {
-    const { deck } = this.props.navigation.state.params
+    const { deck } = this.props
 
     return (
       <View style={styles.deck}>
         <DeckInfo title={deck.title} cardNumber={deck.questions.length} />
-        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('NewQuestion')}>
+        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('NewQuestion', { title: deck.title })}>
           <Text style={styles.buttonText}>Add Card</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Quiz', { questions: deck.questions })}>
           <Text style={styles.buttonText}>Start Quiz</Text>
         </TouchableOpacity>
       </View>
@@ -46,9 +40,11 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps (deck) {
+function mapStateToProps (decks, props) {
+  const { deck } = props.navigation.state.params
+
   return {
-    deck
+    deck: decks[deck.title]
   }
 }
 

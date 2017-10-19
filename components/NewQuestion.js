@@ -8,6 +8,7 @@ import {
 import { addCard } from '../actions'
 import { addCardToDeck } from '../utils/api'
 import { connect } from 'react-redux'
+import { white, darkGreen, gray } from '../utils/colors'
 
 class NewQuestion extends Component {
   state = {
@@ -25,8 +26,10 @@ class NewQuestion extends Component {
     }))
   }
   handleSubmit = (card) => {
-    addCardToDeck('JavaScript', card)
-    this.props.addCard('JavaScript', card)
+    const { title } = this.props.navigation.state.params
+
+    addCardToDeck(title, card)
+    this.props.addCard(title, card)
     this.props.navigation.goBack()
   }
   render () {
@@ -55,19 +58,19 @@ class NewQuestion extends Component {
 const styles = StyleSheet.create({
   button: {
     padding: 10,
-    backgroundColor: 'black',
+    backgroundColor: darkGreen,
     borderRadius: 5,
     margin: 20,
   },
   buttonText :{
-    color: 'white',
+    color: white,
     fontSize: 20,
   },
   input: {
     height: 44,
     width: 200,
     padding: 8,
-    borderColor: '#757575',
+    borderColor: gray,
     borderWidth: 1,
     margin: 50
   }
