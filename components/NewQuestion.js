@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+  View,
   Text,
   KeyboardAvoidingView,
   TextInput,
@@ -12,8 +13,8 @@ import { white, darkGreen, gray } from '../utils/colors'
 
 class NewQuestion extends Component {
   state = {
-    question: 'Enter Question Here',
-    answer: 'Enter Answer Here'
+    question: '',
+    answer: ''
   }
   handleQuestionChange = (question) => {
     this.setState(() => ({
@@ -36,17 +37,21 @@ class NewQuestion extends Component {
     const { question, answer } = this.state
 
     return (
-      <KeyboardAvoidingView>
-        <TextInput
-          value={question}
-          onChangeText={this.handleQuestionChange}
-          style={styles.input}
-        />
-        <TextInput
-          value={answer}
-          onChangeText={this.handleAnswerChange}
-          style={styles.input}
-        />
+      <KeyboardAvoidingView style={styles.newQuestionContainer}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            value={question}
+            onChangeText={this.handleQuestionChange}
+            style={styles.input}
+            placeholder='Enter Question Here'
+          />
+          <TextInput
+            value={answer}
+            onChangeText={this.handleAnswerChange}
+            style={styles.input}
+            placeholder='Enter Answer Here'
+          />
+        </View>
         <TouchableOpacity style={styles.button} onPress={() => this.handleSubmit(this.state)}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: darkGreen,
     borderRadius: 5,
-    margin: 20,
+    margin: 30,
   },
   buttonText :{
     color: white,
@@ -68,12 +73,18 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 44,
-    width: 200,
+    width: 300,
     padding: 8,
     borderColor: gray,
     borderWidth: 1,
-    margin: 50
-  }
+    margin: 20
+  },
+  newQuestionContainer: {
+    alignItems: 'center'
+  },
+  inputContainer: {
+    marginTop: 50
+  },
 })
 
 export default connect(null, { addCard })(NewQuestion)

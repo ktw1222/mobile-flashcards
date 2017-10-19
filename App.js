@@ -13,6 +13,8 @@ import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
 import { Constants } from 'expo'
 import { purple } from './utils/colors'
+import { Ionicons, Entypo } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/helpers'
 
 function UdaciStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -53,13 +55,15 @@ const Tabs = TabNavigator({
   Decks: {
     screen: Decks,
     navigationOptions: {
-      tabBarLabel: 'DECKS'
+      tabBarLabel: 'DECKS',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-paper' size={30} color={tintColor} />
     }
   },
   NewDeck: {
     screen: NewDeck,
     navigationOptions: {
-      tabBarLabel: 'NEW DECK'
+      tabBarLabel: 'NEW DECK',
+      tabBarIcon: ({ tintColor }) => <Entypo name='plus' size={30} color={tintColor} />
     }
   }
 })
@@ -78,11 +82,18 @@ const MainNavigator = StackNavigator({
     screen: NewQuestion
   },
   Quiz: {
-    screen: Quiz
+    screen: Quiz,
+    navigationOptions: {
+      title: 'QUIZ'
+    }
   }
 })
 
 export default class App extends React.Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>

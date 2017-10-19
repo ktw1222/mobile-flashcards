@@ -13,7 +13,7 @@ import { white, darkGreen, gray } from '../utils/colors'
 
 class NewDeck extends Component {
   state = {
-    input: 'Deck Title'
+    input: ''
   }
 
   handleTextChange = (input) => {
@@ -30,7 +30,7 @@ class NewDeck extends Component {
       }
     }
     this.props.addDeck(newDeck)
-    this.props.navigation.goBack()
+    this.props.navigation.navigate('Deck', { deck: newDeck[input] })
   }
 
   render() {
@@ -43,6 +43,7 @@ class NewDeck extends Component {
           value={input}
           style={styles.input}
           onChangeText={this.handleTextChange}
+          placeholder='Deck Title'
         />
         <TouchableOpacity style={styles.button} onPress={() => this.handleSubmit(input)}>
           <Text style={styles.buttonText}>Submit</Text>
