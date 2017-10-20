@@ -56,16 +56,19 @@ class NewDeck extends Component {
 const styles = StyleSheet.create({
   newDeck: {
     marginTop: 50,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   question: {
-    fontSize: 50,
-    textAlign: 'center'
+    fontSize: 35,
+    textAlign: 'center',
+    marginLeft: 20,
+    marginRight: 20
   },
   button: {
     padding: 10,
     backgroundColor: darkGreen,
-    borderRadius: 5,
+    borderRadius: 16,
     margin: 20,
   },
   buttonText :{

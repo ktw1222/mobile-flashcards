@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { gray } from '../utils/colors'
+import { steelBlue } from '../utils/colors'
 
 class DeckInfo extends Component {
   render() {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   cardNumber: {
-    color: gray,
+    color: steelBlue,
     fontSize: 20,
     textAlign: 'center'
   }

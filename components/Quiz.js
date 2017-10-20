@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native'
-import { white, red, darkGreen } from '../utils/colors'
-import { NOTIFICATION_KEY, clearLocalNotification } from '../utils/helpers'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  AsyncStorage,
+  ScrollView } from 'react-native'
+import { white, red, darkGreen, gray, steelBlue } from '../utils/colors'
+import { clearLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
   state = {
@@ -11,10 +17,6 @@ class Quiz extends Component {
     done: false
   }
 
-  componentDidMount() {
-    clearLocalNotification()
-  }
-    
   handlePress = () => {
     this.setState ({
       answer: !this.state.answer
@@ -40,7 +42,7 @@ class Quiz extends Component {
     return (
       <View style={styles.quizContainer}>
         {!done ?
-          <View>
+          <ScrollView>
             <Text style={styles.numberLeft}>{num+1}/{questions.length}</Text>
             {!answer &&
               <View style={styles.textContainer}>
@@ -68,7 +70,7 @@ class Quiz extends Component {
                 <Text style={styles.buttonText}>Incorrect</Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </ScrollView>
         :<View style={styles.scoreContainer}>
           <Text style={styles.scoreText}>You Scored:</Text>
           <Text style={styles.score}>{(score/questions.length) * 100}%</Text>
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
   correctButton: {
     padding: 10,
     backgroundColor: darkGreen,
-    borderRadius: 5,
+    borderRadius: 16,
     marginLeft: 50,
     marginRight: 50,
     marginBottom: 20,
@@ -98,14 +100,15 @@ const styles = StyleSheet.create({
   incorrectButton: {
     padding: 10,
     backgroundColor: red,
-    borderRadius: 5,
+    borderRadius: 16,
     marginLeft: 50,
     marginRight: 50,
+    marginBottom: 50
   },
   button: {
     padding: 10,
     backgroundColor: darkGreen,
-    borderRadius: 5,
+    borderRadius: 16,
     margin: 20,
   },
   buttonText: {
@@ -114,7 +117,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   switch: {
-    color: red,
+    color: steelBlue,
     margin: 10,
     textAlign: 'center',
     fontSize: 20,
@@ -125,18 +128,20 @@ const styles = StyleSheet.create({
     marginTop: 200
   },
   scoreText: {
-    fontSize: 50,
+    fontSize: 35,
     marginBottom: 20
   },
   score: {
     fontSize: 30,
-    color: 'grey'
+    color: gray
   },
   quizContainer: {
     alignItems: 'center'
   },
   textContainer: {
     marginTop: 80,
+    marginLeft: 20,
+    marginRight: 20
   },
   mainText: {
     textAlign: 'center',
@@ -144,8 +149,7 @@ const styles = StyleSheet.create({
   },
   numberLeft: {
     textAlign: 'center',
-    fontSize: 20,
-    alignSelf: 'flex-start'
+    fontSize: 30,
   },
   buttons: {
     marginTop: 100

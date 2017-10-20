@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, AsyncStorage, StatusBar } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  AsyncStorage,
+  StatusBar,
+  Platform,
+} from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { getDecks } from './utils/api'
 import { createStore } from 'redux'
@@ -12,7 +19,7 @@ import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
 import { Constants } from 'expo'
-import { purple } from './utils/colors'
+import { purple, white } from './utils/colors'
 import { Ionicons, Entypo } from '@expo/vector-icons'
 import { setLocalNotification } from './utils/helpers'
 
@@ -66,20 +73,40 @@ const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Entypo name='plus' size={30} color={tintColor} />
     }
   }
+},{
+  navigationOptions: {
+    header: null
+  }, tabBarOptions: {
+    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    style: {
+      height: 50,
+      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      shadowColor: 'rgba(0, 0, 0, 0.24)',
+      shadowOffset: {
+        width: 0,
+        height: 3
+      },
+      shadowRadius: 6,
+      shadowOpacity: 1
+    }
+  }
 })
 
 const MainNavigator = StackNavigator({
   Home: {
-    screen: Tabs,
-    navigationOptions: {
-      title: 'DECKS'
-    }
+    screen: Tabs
   },
   Deck: {
-    screen: Deck
+    screen: Deck,
+    navigationOptions: {
+      title: 'DECK'
+    }
   },
   NewQuestion: {
-    screen: NewQuestion
+    screen: NewQuestion,
+    navigationOptions: {
+      title: 'ADD CARD'
+    }
   },
   Quiz: {
     screen: Quiz,

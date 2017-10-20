@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import DeckCard from './DeckCard'
 
 class DeckList extends Component {
+
   render() {
     const { decks } = this.props
 
     return (
-      <View>
+      <ScrollView>
         {Object.keys(decks).map(deck => (
           <TouchableOpacity key={deck} onPress={() => this.props.navigation.navigate(
             'Deck',
@@ -16,7 +17,7 @@ class DeckList extends Component {
             <DeckCard deck={deck} number={decks[deck].questions.length} />
           </TouchableOpacity>
         ))}
-      </View>
+      </ScrollView>
     )
   }
 }

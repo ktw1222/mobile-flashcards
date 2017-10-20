@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { lightGreen, gray } from '../utils/colors'
+import { lightGreen, gray, steelBlue } from '../utils/colors'
 
 class DeckCard extends Component {
   render() {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     backgroundColor: lightGreen,
     borderRadius: 16,
     padding: 20,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 15,
+    marginRight: 15,
     marginTop: 17,
     shadowRadius: 3,
     shadowOpacity: 0.8,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   number: {
-    color: gray
+    color: steelBlue
   },
 })
 
