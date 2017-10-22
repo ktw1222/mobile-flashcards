@@ -6,7 +6,7 @@ import {
   TextInput,
   KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
-import { addDeck } from '../actions'
+import { addDeck } from '../actions/deck'
 import { saveNewDeck } from '../utils/api'
 import { NavigationActions } from 'react-navigation'
 import { white, darkGreen, gray } from '../utils/colors'
@@ -44,6 +44,7 @@ class NewDeck extends Component {
           style={styles.input}
           onChangeText={this.handleTextChange}
           placeholder='Deck Title'
+          underlineColorAndroid={'transparent'}
         />
         <TouchableOpacity style={styles.button} onPress={() => this.handleSubmit(input)}>
           <Text style={styles.buttonText}>Submit</Text>

@@ -4,7 +4,7 @@ import DeckInfo from './DeckInfo'
 import { darkGreen, white } from '../utils/colors'
 import { connect } from 'react-redux'
 import { getDeck } from '../utils/api'
-import { receiveDeck } from '../actions'
+import { receiveDecks } from '../actions/decks'
 
 class Deck extends Component {
   render() {
@@ -48,4 +48,4 @@ function mapStateToProps (decks, props) {
   }
 }
 
-export default connect(mapStateToProps, { receiveDeck })(Deck)
+export default connect(mapStateToProps, { receiveDecks })(Deck)

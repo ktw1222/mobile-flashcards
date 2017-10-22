@@ -6,7 +6,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity } from 'react-native'
-import { addCard } from '../actions'
+import { addCard } from '../actions/card'
 import { addCardToDeck } from '../utils/api'
 import { connect } from 'react-redux'
 import { white, darkGreen, gray } from '../utils/colors'

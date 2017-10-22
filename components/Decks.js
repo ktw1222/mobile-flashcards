@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { receiveDecks } from '../actions'
+import { receiveDecks } from '../actions/decks'
 import { getDecks } from '../utils/api'
 import DeckList from './DeckList'
 
